@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="Gb2312"?>
 
 <project name="ant-jmeter-test" default="run" basedir=".">
     <tstamp>
@@ -7,11 +7,11 @@
 
     <property environment="env"/>
     <property name="ReportName" value="TestReport" />
-    <!-- ÐèÒª¸Ä³É×Ô¼º±¾µØµÄ Jmeter Ä¿Â¼--> 
+    <!-- éœ€è¦æ”¹æˆè‡ªå·±æœ¬åœ°çš„ Jmeter ç›®å½•--> 
     <property name="jmeter.home" value="D:\loadtest\apache-jmeter-3.0" />
-    <!-- jmeterÉú³Éjtl¡¢html¸ñÊ½µÄ½á¹û±¨¸æµÄÂ·¾¶--> 
+    <!-- jmeterç”Ÿæˆjtlã€htmlæ ¼å¼çš„ç»“æžœæŠ¥å‘Šçš„è·¯å¾„--> 
     <property name="jmeter.result.dir" value="${env.WORKSPACE}/results/${env.BUILD_ID}" />
-    <!-- Éú³ÉµÄ±¨¸æµÄÇ°×º-->  
+    <!-- ç”Ÿæˆçš„æŠ¥å‘Šçš„å‰ç¼€-->  
     <property name="jmeter.result.jtlName" value="${jmeter.result.dir}/${ReportName}.jtl" />
     <property name="jmeter.result.htmlName" value="${jmeter.result.dir}/${ReportName}.html" />
     
@@ -29,7 +29,7 @@
     <target name="test">
         <taskdef name="jmeter" classname="org.programmerplanet.ant.taskdefs.jmeter.JMeterTask" />
         <jmeter jmeterhome="${jmeter.home}" resultlog="${jmeter.result.jtlName}">
-            <!-- ÉùÃ÷ÒªÔËÐÐµÄ½Å±¾"*.jmx"Ö¸°üº¬´ËÄ¿Â¼ÏÂµÄËùÓÐjmeter½Å±¾-->
+            <!-- å£°æ˜Žè¦è¿è¡Œçš„è„šæœ¬"*.jmx"æŒ‡åŒ…å«æ­¤ç›®å½•ä¸‹çš„æ‰€æœ‰jmeterè„šæœ¬-->
             <testplans dir="D:\loadtest\apache-jmeter-3.0\demo\jiekoutest" includes="*.jmx" />
             
             <property name="jmeter.save.saveservice.output_format" value="xml"/>
@@ -40,7 +40,7 @@
         <xslt in="${jmeter.result.jtlName}"
               out="${jmeter.result.htmlName}"
               style="${jmeter.home}/extras/jmeter-results-detail-report_21.xsl" />
-        <!-- ÒòÎªÉÏÃæÉú³É±¨¸æµÄÊ±ºò£¬²»»á½«Ïà¹ØµÄÍ¼Æ¬Ò²Ò»Æð¿½±´ÖÁÄ¿±êÄ¿Â¼£¬ËùÒÔ£¬ÐèÒªÊÖ¶¯¿½±´ --> 
+        <!-- å› ä¸ºä¸Šé¢ç”ŸæˆæŠ¥å‘Šçš„æ—¶å€™ï¼Œä¸ä¼šå°†ç›¸å…³çš„å›¾ç‰‡ä¹Ÿä¸€èµ·æ‹·è´è‡³ç›®æ ‡ç›®å½•ï¼Œæ‰€ä»¥ï¼Œéœ€è¦æ‰‹åŠ¨æ‹·è´ --> 
         <copy todir="${jmeter.result.dir}">
             <fileset dir="${jmeter.home}/extras">
                 <include name="collapse.png" />
